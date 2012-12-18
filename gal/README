@@ -1,0 +1,13 @@
+When the mturk study is complete, do the following:
+
+1) Download the mturk results to this folder. It will be called Batch_xxxxx.csv.
+
+2) Make sure you've generated gold standard data using gold.html in ../www/. Results are stored in ../www/save.results.txt.
+
+3) Run make.sh with the following arguments:
+     1 dataset - name of the dataset, preferably the same one you used when making the previous directory
+     2 Batch_xxxxxx.csv
+
+4) Check the numbers in dataset.workerstatus and dataset.results/* to make sure they're reasonable and the only people you're rejecting are clearly mass spammers. Remember that there's a great deal of requester fraud on MT, and many workers bide against this by only doing a couple HITs from an unfamiliar requester to make sure they'll be paid honestly. You can adjust the approval behavior of the script by running ./make_approvalfile.sh by hand with different parameters. Aim for a very low rejection rate, <5%.
+
+5) Once you're happy, upload the mturk approval file.

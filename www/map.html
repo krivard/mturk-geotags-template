@@ -1,0 +1,57 @@
+<html>
+<head>
+<script type="text/javascript" src="pluralize.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="geotags.js"></script>
+<script type="text/javascript" src="all.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBA-phjQc5udwGuXqzlC1C6NOeDW3kaJvs&sensor=false"></script>
+<script type="text/javascript">
+//
+// This method Gets URL Parameters (GUP), e.g.:
+// compare.html?concept=city:bangalore&assignmentId=*************
+//
+function gup( name )
+{
+  var regexS = "[\\?&]"+name+"=([^&#]*)";
+  var regex = new RegExp( regexS );
+  var tmpURL = window.location.href;
+  var results = regex.exec( tmpURL );
+  if( results == null )
+    return "";
+  else
+    return results[1].replace(/%3A/,':');
+}
+
+(function($){
+		       
+    $(function () {
+	var toggleStrings = ['Hide example','Show example'];
+        var i = gup('index');
+        if (i === "") { 
+          var c = gup('concept');
+	  i=single.data.map(function(o){return o.label;}).indexOf(c);
+        }
+        var doj = {
+			lat:single.data[i].lat,
+			lng:single.data[i].lon,
+			title:single.data[i].label,
+                        dataset:single.data[i].dataset,
+                        varMi:single.data[i].varMi
+		    };
+        console.log(doj.title);
+	geotags.data = [doj];
+        console.log(doj);
+	loadMap();
+    });
+})(jQuery);
+</script>
+<style>
+#map {height:100%;margin:0 15px; xborder:1pt solid green}
+</style>
+</head>
+<body id="list">
+
+<div id="map"></div>
+
+</body>
+</html>

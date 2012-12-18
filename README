@@ -1,0 +1,34 @@
+To generate a single-dataset-style mturk evaluation package for NELL geolocations,
+
+1) Place a copy of Locator-out.tsv in this folder (find it in latlongWorkingDir)
+   Locator-out.tsv has the following fields:
+       1 category:concept
+       2 maxVarianceInMiles
+       3 latVariance
+       4 lonVariance
+       5 lat
+       6 lon
+       7 count
+       8 list of matched names
+
+2) Run make.sh with the following arguments:
+       1 dataset - give a name to your dataset, to distinguish these files from others
+       2 Locator-out.tsv - as above
+       3 minCategoryCount - only consider concepts from categories in Locator-out which have at least this many concepts listed
+       4 maxVarInMiles - only consider geolocations in Locator-out which have this maxVar or less
+       5 sampleSize - select this many random concepts from each category in Locator-out (should be equal or less than minCategoryCount)
+
+3) Add a symlink to www/ from somewhere publicly browsable on the web. Make sure you have PHP turned on.
+
+4) Generate gold data:
+       a. Move www/save.safe.php to www/save.php
+       b. Visit www/gold.html and do a few concepts in each category
+       c. Move www/save.php to www/save.safe.php
+
+5) Upload hitinput.txt to Mechanical Turk
+
+6) Double check that the google links work
+
+7) Run Mechanical Turk
+
+8) Follow the directions in gal/README

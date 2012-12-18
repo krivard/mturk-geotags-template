@@ -1,0 +1,64 @@
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="all.js"></script>
+<script language="javascript">
+$.getUrlParameter = function(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)')
+	.exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+};
+$(function() {
+    var i=parseInt($.getUrlParameter("index"));
+$("#mapframe").append(
+    $("<iframe>")
+        .attr("src","http://rinkitink.ml.cmu.edu/mturk-semanticGeoTagging/map.html?index="+i)
+        .attr("width","100%")
+    .attr("height","80%"));
+$("#header").append(
+    $("<h1>")
+    .text(single.data[i].label));
+$("#index").attr("value",i);
+$("#concept").attr("value",single.data[i].label);
+if (i>0) {
+    $("#prevlink").attr("href","gold.html?index="+(i-1));
+}
+if (i<901) {
+    $("#nextlink").attr("href","gold.html?index="+(i+1)).click(function(evt) {
+	jQuery.post("save.php",$("#form").serialize(), function(data) { console.log("Success:"); console.log(data); window.location.href="gold.html?index="+(i+1); });
+        return false;
+    });
+}
+});
+</script>
+<style>
+.eval {text-align:center}
+.spacer {width:150px}
+</style>
+</head>
+<body>
+<div id="header"></div>
+<div id="work">
+    <form id="form">
+    <input type="hidden" name="index" id="index"/>
+    <input type="hidden" name="concept" id="concept"/>
+    <table width="100%">
+    <tr>
+        <td class="spacer"></td>
+        <td width="20px"><a id="prevlink" href="#">Prev</a></td>
+        <td class="spacer"></td>
+        <td class="eval"><input type="radio" name="eval" id="good" value="good" CHECKED/><label for="good">good</label></td>
+        <td class="eval"><input type="radio" name="eval" id="nearby" value="nearby"/><label for="nearby">nearby</label></td>
+        <td class="eval"><input type="radio" name="eval" id="wrong" value="bad"/><label for="wrong">bad</label></td>
+        <td class="eval"><input type="radio" name="eval" id="what" value="what"/><label for="what">what?</label></td>
+        <td class="spacer"></td>
+        <td width="20px" style="text-align:right"><a id="nextlink" href="#">Next</a></td>
+        <td class="spacer"></td>
+    </tr>
+    </table>
+    </form>
+</div>
+<div id="mapframe"></div>
+
+</body>
+</html>

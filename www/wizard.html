@@ -1,0 +1,70 @@
+<html>
+<body>
+<div id="concept">
+<h1>${category}: ${name}</h1>
+</div>
+<p><a href="http://google.com/search?q=${category}+${name}" target="_blank">[Search google]</a></p>
+<table width="100%" height="464">
+    <tbody>
+        <tr>
+            <td width="450" valign="top">
+            <div class="section">
+            <p>Judge the quality of this map location on the following criteria:</p>
+            <ul>
+                <li><span class="good" style="font-weight:bold">Good</span>: The map pin indicates a ${category} called &quot;${name}&quot;. It's okay if &quot;${name}&quot; isn't there any more; was it ever there?</li>
+		<li><span class="nearby" style="font-weight:bold">Nearby</span>: The map pin is in the general vicinity of a ${category} called &quot;${name}&quot;. </li>
+                <li><span class="bad" style="font-weight:bold">Bad</span>: The map pin is nowhere near a ${category} that might be considered &quot;${name}&quot;.
+		<li><b>Broken Concept</b>: It doesn't make sense to have a ${category} called &quot;${name}&quot;. Perhaps it is too general ("location:apartment") or has the wrong category ("continent:london") or is otherwise nonsense.</li>
+            </ul>
+	    <table style="margin-left:3em;margin-bottom:1em">
+	      <tr><td class="good"><input type="radio" value="good" name="quality" id="good"/><label for="good">Good</label></td></tr>
+	      <tr><td class="nearby"><input type="radio" value="nearby" name="quality" id="nearby"/><label for="nearby">Nearby</label></td></tr>
+              <tr><td class="bad"><input type="radio" checked="" value="bad" name="quality" id="bad"/><label for="bad">Bad</label></td></tr>
+	      <tr><td><input type="radio" value="broken" name="quality" id="broken"/><label for="broken">Broken Concept</label></td></tr>
+            </table>
+	    <label for="comment">Comments?</label>
+            <p><textarea rows="2" cols="55" name="comment" id="comment"></textarea></p>
+            </td>
+            <td valign="top"><iframe width="100%" height="450px" src="http://inga.isri.cmu.edu/nell_geotags/map.html?index=${index}"></iframe></td>
+        </tr>
+    </tbody>
+</table>
+<p class="highlight-box">You will be evaluated based on your agreement with 4 other workers using an automated review process based on <a href="http://github.com/ipeirotis/Get-Another-Label">GAL</a>. GAL works best with 20 or more labels for each worker. We do not use comments to determine approval, but may award bonuses for comments that explain borderline cases (&quot;I suppose it's close enough to the island, though technically in the ocean&quot;) or help keep our data current (&quot;this building isn't there anymore; it was demolished in 1997&quot; &quot;the proper spelling is 'Mumbai'&quot;).</p>
+<p><style type="text/css">
+<!--
+.highlight-box { border:solid 0px #98BE10; background:#FCF9CE; color:#222222; padding:4px; text-align:left; font-size: smaller;}
+div#concept h1 {display:inline}
+div#concept {margin-bottom:10px;margin-left:2px}
+div#concept a {vertical-align:top}
+    div#question {xborder:1pt solid gray; overflow:auto;padding:10px 0;}
+    .instance {background:#446644;padding:0 5pt}
+#list .heading {color:#FFFFFF}
+#map {height:440px;margin:0 15px 0 420px; xborder:1pt solid green}
+#form-body {float:left; width:400px; padding:0 15px;}
+#form h2 {margin:0;margin-bottom:0.5em;}
+#geotags-info {margin-right:10px}
+#geotags-info th { font-size:10pt; text-align:left }
+#geotags-info td { font-size:9pt; text-align:left }
+#geotags-info .label {color:#999; padding-right:5px;padding-top:5px}
+ul.radio {list-style-type:none; padding-left:2em;margin-bottom:0}
+ul.radio input {margin-right:10px}
+table.radio {margin-left:2em; border-collapse:collapse}
+#form td.label {padding: 0 10px}
+td.radio,th.radio {text-align:center}
+th.radio{padding:2pt}
+#form td.group {xbackground:#eeeee8}
+div.togg {display:none}
+img.icon {height:28px;margin-right:3px;vertical-align:middle}
+li.icon {padding-top:5px}
+div.section {border-left:3px solid #ddd8dd;  padding:1px 8px; margin-bottom:20px;}
+div.section p{margin: 0 0 0.5em 0;}
+.disabled {color:#bbb}
+div.disabled {background:#eee}
+.bad {background:#fdd}
+.good {background:#dfd}
+.nearby {background:#ffd}
+-->
+</style>
+</script></p>
+</body>
+</html>
