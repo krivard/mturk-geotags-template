@@ -1,3 +1,11 @@
+GAL is Get Another Label: https://github.com/ipeirotis/Get-Another-Label
+by ipeirotis.
+
+
+README follows for use of GAL in mturk-geotags-template
+by krivard.
+
+
 When the mturk study is complete, do the following:
 
 1) Download the mturk results to this folder. It will be called Batch_xxxxx.csv.
